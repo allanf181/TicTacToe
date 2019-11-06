@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no" />
+    <meta name="author" content="Roger Bernardo de Melo Lima">
+    <meta name="description" content="Jogo da Velha">
+    <meta name="keywords" content="jogo">
+    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="css/estilo.css" />
+    <title>Jogo da Velha</title>
+</head>
+
+<body>
+    <header>
+        <h1>Jogo da Velha</h1>
+    </header>
+
+    <main>
+        <section class="matriz">
+            <div class="row">
+                <div class="col-xl-3"></div>
+                <div class="col-xl-6">
+                    <div class="row">
+                        <div class="col m00 default" id="m00" onclick="jogar('m00', 0, 0)"></div>
+                        <div class="col m10 default" id="m10" onclick="jogar('m10', 1, 0)"></div>
+                        <div class="col m20 default" id="m20" onclick="jogar('m20', 2, 0)"></div>
+                    </div>
+                    <div class="row">
+                        <div class="col m01 default" id="m01" onclick="jogar('m01', 0, 1)"></div>
+                        <div class="col m11 default" id="m11" onclick="jogar('m11', 1, 1)"></div>
+                        <div class="col m21 default" id="m21" onclick="jogar('m21', 2, 1)"></div>
+                    </div>
+                    <div class="row">
+                        <div class="col m02 default" id="m02" onclick="jogar('m02', 0, 2)"></div>
+                        <div class="col m12 default" id="m12" onclick="jogar('m12', 1, 2)"></div>
+                        <div class="col m22 default" id="m22" onclick="jogar('m22', 2, 2)"></div>
+                    </div>
+                </div>
+                <div class="col-xl-3">
+                    <button type="button" class="btn btn-outline-light" onclick="novoJogo()">Novo Jogo</button>                    
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script src="js/comportamento.js"></script>
+    <script src="assets/jquery-3.4.1.min.js"></script>
+    <script src="assets/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+</body>
+
+</html>

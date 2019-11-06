@@ -1,0 +1,98 @@
+/* -----------------------------------------*/
+/* ---------->>> Variáveis SASS <<<---------*/
+/* -----------------------------------------*/
+$borda_branca: 2px solid white;
+$altura_quad: 250px;
+
+/* -----------------------------------------*/
+/* ---------->>> Mixins <<<-----------------*/
+/* -----------------------------------------*/
+
+
+
+/* -----------------------------------------*/
+/* ---------->>> Normalização <<<-----------*/
+/* -----------------------------------------*/
+*{
+    margin: 0;
+    padding: 0;
+    border: 0;
+}
+
+/* -----------------------------------------*/
+/* ---------->>> HTML <<<-------------------*/
+/* -----------------------------------------*/
+body{
+    background-image: linear-gradient( 89deg,  rgba(21,74,189,1) 0.1%, rgba(26,138,211,1) 51.5%, rgba(72,177,234,1) 100.2% );
+}
+
+header{
+    padding-top: 25px;
+    padding-bottom: 25px;
+    margin-bottom: 25px;
+}
+
+header h1{
+    text-align: center;  
+    text-transform: uppercase;
+    letter-spacing: 8px; 
+    color: white; 
+}
+
+/* -------------------------------------------*/
+/* ---------->>> Jogo da velha <<<------------*/
+/* -------------------------------------------*/
+.row{
+    margin:0 auto;
+}
+
+.matriz{        
+   margin: auto;
+
+    .row .col{
+        height: $altura_quad;  
+
+        @media (max-width: 900px){
+            height: $altura_quad - 10;            
+        }
+
+        @media (max-width: 800px){
+            height: $altura_quad - 20;              
+        }
+
+        @media (max-width: 800px){
+            height: $altura_quad - 30;               
+        }
+        
+        @media (max-width: 700px){
+            height: $altura_quad - 50;             
+        }
+        
+        @media (max-width: 600px){
+            height: $altura_quad - 80;        
+        }
+    }
+}
+
+.m00, .m01, .m11, .m10{
+    border-right: $borda_branca;
+    border-bottom: $borda_branca;
+}
+
+.m20, .m21{
+    border-bottom: $borda_branca;
+}
+
+.m02, .m12{
+    border-right: $borda_branca;
+}
+
+.m00, .m01, .m11, .m10, .m20, .m21, .m22, .m02, .m12{    
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 20%;    
+}
+
+/* -----------------------------------------*/
+/* ---------->>> Imagem <<<-----------------*/
+/* -----------------------------------------*/

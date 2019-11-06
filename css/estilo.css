@@ -1,0 +1,78 @@
+@charset "UTF-8";
+/* -----------------------------------------*/
+/* ---------->>> Variáveis SASS <<<---------*/
+/* -----------------------------------------*/
+/* -----------------------------------------*/
+/* ---------->>> Mixins <<<-----------------*/
+/* -----------------------------------------*/
+/* -----------------------------------------*/
+/* ---------->>> Normalização <<<-----------*/
+/* -----------------------------------------*/
+* {
+  margin: 0;
+  padding: 0;
+  border: 0; }
+
+/* -----------------------------------------*/
+/* ---------->>> HTML <<<-------------------*/
+/* -----------------------------------------*/
+body {
+  background-image: linear-gradient(89deg, #154abd 0.1%, #1a8ad3 51.5%, #48b1ea 100.2%); }
+
+header {
+  padding-top: 25px;
+  padding-bottom: 25px;
+  margin-bottom: 25px; }
+
+header h1 {
+  text-align: center;
+  text-transform: uppercase;
+  letter-spacing: 8px;
+  color: white; }
+
+/* -------------------------------------------*/
+/* ---------->>> Jogo da velha <<<------------*/
+/* -------------------------------------------*/
+.row {
+  margin: 0 auto; }
+
+.matriz {
+  margin: auto; }
+  .matriz .row .col {
+    height: 250px; }
+    @media (max-width: 900px) {
+      .matriz .row .col {
+        height: 240px; } }
+    @media (max-width: 800px) {
+      .matriz .row .col {
+        height: 230px; } }
+    @media (max-width: 800px) {
+      .matriz .row .col {
+        height: 220px; } }
+    @media (max-width: 700px) {
+      .matriz .row .col {
+        height: 200px; } }
+    @media (max-width: 600px) {
+      .matriz .row .col {
+        height: 170px; } }
+
+.m00, .m01, .m11, .m10 {
+  border-right: 2px solid white;
+  border-bottom: 2px solid white; }
+
+.m20, .m21 {
+  border-bottom: 2px solid white; }
+
+.m02, .m12 {
+  border-right: 2px solid white; }
+
+.m00, .m01, .m11, .m10, .m20, .m21, .m22, .m02, .m12 {
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 20%; }
+
+/* -----------------------------------------*/
+/* ---------->>> Imagem <<<-----------------*/
+/* -----------------------------------------*/
+
+/*# sourceMappingURL=estilo.css.map */
