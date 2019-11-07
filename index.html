@@ -23,27 +23,34 @@
                 <div class="col-xl-3"></div>
                 <div class="col-xl-6">
                     <div class="row">
-                        <div class="col m00 default" id="m00" onclick="jogar('m00', 0, 0)"></div>
-                        <div class="col m10 default" id="m10" onclick="jogar('m10', 1, 0)"></div>
-                        <div class="col m20 default" id="m20" onclick="jogar('m20', 2, 0)"></div>
+                        <div class="col m00 default" id="m00" onclick="jogar('m00', 0)"></div>
+                        <div class="col m10 default" id="m10" onclick="jogar('m10', 1)"></div>
+                        <div class="col m20 default" id="m20" onclick="jogar('m20', 2)"></div>
                     </div>
                     <div class="row">
-                        <div class="col m01 default" id="m01" onclick="jogar('m01', 0, 1)"></div>
-                        <div class="col m11 default" id="m11" onclick="jogar('m11', 1, 1)"></div>
-                        <div class="col m21 default" id="m21" onclick="jogar('m21', 2, 1)"></div>
+                        <div class="col m01 default" id="m01" onclick="jogar('m01', 3)"></div>
+                        <div class="col m11 default" id="m11" onclick="jogar('m11', 4)"></div>
+                        <div class="col m21 default" id="m21" onclick="jogar('m21', 5)"></div>
                     </div>
                     <div class="row">
-                        <div class="col m02 default" id="m02" onclick="jogar('m02', 0, 2)"></div>
-                        <div class="col m12 default" id="m12" onclick="jogar('m12', 1, 2)"></div>
-                        <div class="col m22 default" id="m22" onclick="jogar('m22', 2, 2)"></div>
+                        <div class="col m02 default" id="m02" onclick="jogar('m02', 6)"></div>
+                        <div class="col m12 default" id="m12" onclick="jogar('m12', 7)"></div>
+                        <div class="col m22 default" id="m22" onclick="jogar('m22', 8)"></div>
                     </div>
                 </div>
                 <div class="col-xl-3">
-                    <button type="button" class="btn btn-outline-light" onclick="novoJogo()">Novo Jogo</button>                    
+                    <button type="button" class="btn btn-outline-light" onclick="novoJogo()">Novo Jogo</button>
                 </div>
             </div>
         </section>
     </main>
+
+    <footer>
+        <p>Estatísticas</p>
+        <p>Vitórias do jogador: </p>
+        <p>Vitórias da Máquina: </p>
+        <p>Número de jogos: </p>
+    </footer>
 
     <script src="js/comportamento.js"></script>
     <script src="assets/jquery-3.4.1.min.js"></script>

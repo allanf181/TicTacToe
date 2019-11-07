@@ -24,12 +24,18 @@ $altura_quad: 250px;
 /* -----------------------------------------*/
 body{
     background-image: linear-gradient( 89deg,  rgba(21,74,189,1) 0.1%, rgba(26,138,211,1) 51.5%, rgba(72,177,234,1) 100.2% );
+    color: white;
 }
 
 header{
     padding-top: 25px;
     padding-bottom: 25px;
     margin-bottom: 25px;
+
+    @media (max-width: 600px){
+        padding-bottom: 15px;
+        margin-bottom: 15px;
+    }
 }
 
 header h1{
@@ -37,6 +43,14 @@ header h1{
     text-transform: uppercase;
     letter-spacing: 8px; 
     color: white; 
+
+    @media (max-width: 600px){
+        font-size: 1.5em;
+    }
+}
+
+footer{
+    padding: 5% 20%;
 }
 
 /* -------------------------------------------*/
@@ -52,16 +66,16 @@ header h1{
     .row .col{
         height: $altura_quad;  
 
-        @media (max-width: 900px){
-            height: $altura_quad - 10;            
+        @media (max-width: 1000px){
+            height: $altura_quad - 20;            
+        }       
+
+        @media (max-width: 800px){
+            height: $altura_quad - 30;              
         }
 
         @media (max-width: 800px){
-            height: $altura_quad - 20;              
-        }
-
-        @media (max-width: 800px){
-            height: $altura_quad - 30;               
+            height: $altura_quad - 40;               
         }
         
         @media (max-width: 700px){
@@ -70,6 +84,14 @@ header h1{
         
         @media (max-width: 600px){
             height: $altura_quad - 80;        
+        }
+
+        @media (max-width: 500px){
+            height: $altura_quad - 90;        
+        }
+
+        @media (max-width: 500px){
+            height: $altura_quad - 120;        
         }
     }
 }

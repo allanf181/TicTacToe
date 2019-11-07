@@ -17,18 +17,29 @@
 /* ---------->>> HTML <<<-------------------*/
 /* -----------------------------------------*/
 body {
-  background-image: linear-gradient(89deg, #154abd 0.1%, #1a8ad3 51.5%, #48b1ea 100.2%); }
+  background-image: linear-gradient(89deg, #154abd 0.1%, #1a8ad3 51.5%, #48b1ea 100.2%);
+  color: white; }
 
 header {
   padding-top: 25px;
   padding-bottom: 25px;
   margin-bottom: 25px; }
+  @media (max-width: 600px) {
+    header {
+      padding-bottom: 15px;
+      margin-bottom: 15px; } }
 
 header h1 {
   text-align: center;
   text-transform: uppercase;
   letter-spacing: 8px;
   color: white; }
+  @media (max-width: 600px) {
+    header h1 {
+      font-size: 1.5em; } }
+
+footer {
+  padding: 5% 20%; }
 
 /* -------------------------------------------*/
 /* ---------->>> Jogo da velha <<<------------*/
@@ -40,21 +51,27 @@ header h1 {
   margin: auto; }
   .matriz .row .col {
     height: 250px; }
-    @media (max-width: 900px) {
-      .matriz .row .col {
-        height: 240px; } }
-    @media (max-width: 800px) {
+    @media (max-width: 1000px) {
       .matriz .row .col {
         height: 230px; } }
     @media (max-width: 800px) {
       .matriz .row .col {
         height: 220px; } }
+    @media (max-width: 800px) {
+      .matriz .row .col {
+        height: 210px; } }
     @media (max-width: 700px) {
       .matriz .row .col {
         height: 200px; } }
     @media (max-width: 600px) {
       .matriz .row .col {
         height: 170px; } }
+    @media (max-width: 500px) {
+      .matriz .row .col {
+        height: 160px; } }
+    @media (max-width: 500px) {
+      .matriz .row .col {
+        height: 130px; } }
 
 .m00, .m01, .m11, .m10 {
   border-right: 2px solid white;
