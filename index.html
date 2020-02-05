@@ -18,6 +18,28 @@
     </header>
 
     <main>
+        <!-- Modal -->
+        <div class="modal fade" id="modalVencedor" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+            aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="ModalLabel">Parabéns!!!</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                       <p>Vitória do jogador <span id="spanVencedor"></span></p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-primary" data-dismiss="modal" onclick="novoJogo()">Novo Jogo</button>
+                        <button type="button" class="btn btn-secundary" data-dismiss="modal">Fechar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
         <section class="matriz">
             <div class="row">
                 <div class="col-xl-3"></div>
@@ -39,21 +61,21 @@
                     </div>
                 </div>
                 <div class="col-xl-3">
-                    <button type="button" class="btn btn-outline-light" onclick="novoJogo()">Novo Jogo</button>
+                    <button type="button" class="btn-newGame" onclick="novoJogo()">Novo Jogo</button>
                 </div>
             </div>
         </section>
     </main>
 
     <footer>
-        <p>Estatísticas</p>
-        <p>Vitórias do jogador: </p>
-        <p>Vitórias da Máquina: </p>
-        <p>Número de jogos: </p>
+        <p><strong>Estatísticas</strong></p>
+        <p>Vitórias do jogador 1: <span id="vitoriaJogador1"></span></p>
+        <p>Vitórias do jogador 2: <span id="vitoriaJogador2"></span></p>
+        <p>Número de jogos: <span id="numeroJogos"></span></p>
     </footer>
 
-    <script src="js/comportamento.js"></script>
     <script src="assets/jquery-3.4.1.min.js"></script>
+    <script src="js/comportamento.js"></script>
     <script src="assets/bootstrap/js/bootstrap.bundle.min.js"></script>
     <script src="assets/bootstrap/js/bootstrap.min.js"></script>
 </body>

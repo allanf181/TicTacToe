@@ -1,27 +1,13 @@
-/* -----------------------------------------*/
-/* ---------->>> Variáveis SASS <<<---------*/
-/* -----------------------------------------*/
 $borda_branca: 2px solid white;
 $altura_quad: 250px;
 
-/* -----------------------------------------*/
-/* ---------->>> Mixins <<<-----------------*/
-/* -----------------------------------------*/
 
-
-
-/* -----------------------------------------*/
-/* ---------->>> Normalização <<<-----------*/
-/* -----------------------------------------*/
 *{
     margin: 0;
     padding: 0;
     border: 0;
 }
 
-/* -----------------------------------------*/
-/* ---------->>> HTML <<<-------------------*/
-/* -----------------------------------------*/
 body{
     background-image: linear-gradient( 89deg,  rgba(21,74,189,1) 0.1%, rgba(26,138,211,1) 51.5%, rgba(72,177,234,1) 100.2% );
     color: white;
@@ -51,7 +37,12 @@ header h1{
 
 footer{
     padding: 5% 20%;
+
+    @media (max-width: 1200px){
+        padding: 5%;
+    }       
 }
+
 
 /* -------------------------------------------*/
 /* ---------->>> Jogo da velha <<<------------*/
@@ -66,11 +57,11 @@ footer{
     .row .col{
         height: $altura_quad;  
 
-        @media (max-width: 1000px){
+        @media (max-width: 1400px){
             height: $altura_quad - 20;            
         }       
 
-        @media (max-width: 800px){
+        @media (max-width: 900px){
             height: $altura_quad - 30;              
         }
 
@@ -90,7 +81,7 @@ footer{
             height: $altura_quad - 90;        
         }
 
-        @media (max-width: 500px){
+        @media (max-width: 400px){
             height: $altura_quad - 120;        
         }
     }
@@ -115,6 +106,23 @@ footer{
     background-size: 20%;    
 }
 
-/* -----------------------------------------*/
-/* ---------->>> Imagem <<<-----------------*/
-/* -----------------------------------------*/
+.btn-newGame{
+    background-color: transparent;
+    color: white;
+    text-align: center;
+    border: 1px solid white;
+    padding: 2px 12px ;
+    height: 30px;
+    width: 120px;
+    border-radius: 10px;     
+    transition: 0.5s;
+}
+
+.btn-newGame:hover{
+    color: black;
+    background-color: white;
+}
+
+.modal, .modal-dialog{
+    color:black;
+}

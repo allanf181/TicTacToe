@@ -18,6 +18,8 @@ var rodada = 1;
 var n_jogos = 1;
 var jogabilidade = true;
 var vez_jogador = 0;
+var vitoriaJogador1 = 0;
+var vitoriaJogador2 = 0;
 
 /* ---------->>> MATRIZ DO JOGO <<<----------*/
 var matriz = new Array(9);
@@ -49,49 +51,48 @@ function jogar(id, posicao) {
     vitoria2();
 }
 
-
 function vitoria1() {
     //Horizontal
     if (matriz[0] == 1 && matriz[1] == 1 && matriz[2] == 1) {
         console.log("Jogador 1 venceu no jogo nº: " + n_jogos);
-        jogabilidade = false;
+        qtdVitoria(1);
     }
 
     if (matriz[3] == 1 && matriz[4] == 1 && matriz[5] == 1) {
         console.log("Jogador 1 venceu no jogo nº: " + n_jogos);
-        jogabilidade = false;
+        qtdVitoria(1);
     }
 
     if (matriz[6] == 1 && matriz[7] == 1 && matriz[8] == 1) {
         console.log("Jogador 1 venceu no jogo nº: " + n_jogos);
-        jogabilidade = false;
+        qtdVitoria(1);
     }
 
     //Vertical
     if (matriz[0] == 1 && matriz[3] == 1 && matriz[6] == 1) {
         console.log("Jogador 1 venceu no jogo nº: " + n_jogos);
-        jogabilidade = false;
+        qtdVitoria(1);
     }
 
     if (matriz[1] == 1 && matriz[4] == 1 && matriz[7] == 1) {
         console.log("Jogador 1 venceu no jogo nº: " + n_jogos);
-        jogabilidade = false;
+        qtdVitoria(1);
     }
 
     if (matriz[2] == 1 && matriz[5] == 1 && matriz[8] == 1) {
         console.log("Jogador 1 venceu no jogo nº: " + n_jogos);
-        jogabilidade = false;
+        qtdVitoria(1);
     }
 
     //Diagonal
     if (matriz[0] == 1 && matriz[4] == 1 && matriz[8] == 1) {
         console.log("Jogador 1 venceu no jogo nº: " + n_jogos);
-        jogabilidade = false;
+        qtdVitoria(1);
     }
 
     if (matriz[2] == 1 && matriz[4] == 1 && matriz[6] == 1) {
         console.log("Jogador 1 venceu no jogo nº: " + n_jogos);
-        jogabilidade = false;
+        qtdVitoria(1);
     }
 }
 
@@ -99,47 +100,46 @@ function vitoria2() {
     //Horizontal
     if (matriz[0] == 2 && matriz[1] == 2 && matriz[2] == 2) {
         console.log("Jogador 2 venceu no jogo nº: " + n_jogos);
-        jogabilidade = false;
+        qtdVitoria(2);
     }
 
     if (matriz[3] == 2 && matriz[4] == 2 && matriz[5] == 2) {
         console.log("Jogador 2 venceu no jogo nº: " + n_jogos);
-        jogabilidade = false;
+        qtdVitoria(2);
     }
 
     if (matriz[6] == 2 && matriz[7] == 2 && matriz[8] == 2) {
         console.log("Jogador 2 venceu no jogo nº: " + n_jogos);
-        jogabilidade = false;
+        qtdVitoria(2);
     }
 
     //Vertical
     if (matriz[0] == 2 && matriz[3] == 2 && matriz[6] == 2) {
         console.log("Jogador 2 venceu no jogo nº: " + n_jogos);
-        jogabilidade = false;
+        qtdVitoria(2);
     }
 
     if (matriz[1] == 2 && matriz[4] == 2 && matriz[7] == 2) {
         console.log("Jogador 2 venceu no jogo nº: " + n_jogos);
-        jogabilidade = false;
+        qtdVitoria(2);
     }
 
     if (matriz[2] == 2 && matriz[5] == 2 && matriz[8] == 2) {
         console.log("Jogador 2 venceu no jogo nº: " + n_jogos);
-        jogabilidade = false;
+        qtdVitoria(2);
     }
 
     //Diagonal
     if (matriz[0] == 2 && matriz[4] == 2 && matriz[8] == 2) {
         console.log("Jogador 2 venceu no jogo nº: " + n_jogos);
-        jogabilidade = false;
+        qtdVitoria(2);
     }
 
     if (matriz[2] == 2 && matriz[4] == 2 && matriz[6] == 2) {
         console.log("Jogador 2 venceu no jogo nº: " + n_jogos);
-        jogabilidade = false;
+        qtdVitoria(2);
     }
 }
-
 
 function novoJogo() {
     rodada = 1;
@@ -156,5 +156,23 @@ function novoJogo() {
     }
 }
 
+function qtdVitoria(jogador) {
+    jogabilidade = false;
+    document.getElementById('numeroJogos').innerHTML = n_jogos;
+
+    if (jogador === 1) {
+        vitoriaJogador1++;
+        document.getElementById('vitoriaJogador1').innerHTML = vitoriaJogador1;        
+        $('#modalVencedor').modal('show');
+        document.getElementById('spanVencedor').innerHTML = '1'; 
+    }
+
+    else {
+        vitoriaJogador2++;
+        document.getElementById('vitoriaJogador2').innerHTML = vitoriaJogador2;
+        $('#modalVencedor').modal('show');  
+        document.getElementById('spanVencedor').innerHTML = '2';      
+    }
+}
 
 

@@ -1,21 +1,8 @@
-@charset "UTF-8";
-/* -----------------------------------------*/
-/* ---------->>> Variáveis SASS <<<---------*/
-/* -----------------------------------------*/
-/* -----------------------------------------*/
-/* ---------->>> Mixins <<<-----------------*/
-/* -----------------------------------------*/
-/* -----------------------------------------*/
-/* ---------->>> Normalização <<<-----------*/
-/* -----------------------------------------*/
 * {
   margin: 0;
   padding: 0;
   border: 0; }
 
-/* -----------------------------------------*/
-/* ---------->>> HTML <<<-------------------*/
-/* -----------------------------------------*/
 body {
   background-image: linear-gradient(89deg, #154abd 0.1%, #1a8ad3 51.5%, #48b1ea 100.2%);
   color: white; }
@@ -40,6 +27,9 @@ header h1 {
 
 footer {
   padding: 5% 20%; }
+  @media (max-width: 1200px) {
+    footer {
+      padding: 5%; } }
 
 /* -------------------------------------------*/
 /* ---------->>> Jogo da velha <<<------------*/
@@ -51,10 +41,10 @@ footer {
   margin: auto; }
   .matriz .row .col {
     height: 250px; }
-    @media (max-width: 1000px) {
+    @media (max-width: 1400px) {
       .matriz .row .col {
         height: 230px; } }
-    @media (max-width: 800px) {
+    @media (max-width: 900px) {
       .matriz .row .col {
         height: 220px; } }
     @media (max-width: 800px) {
@@ -69,7 +59,7 @@ footer {
     @media (max-width: 500px) {
       .matriz .row .col {
         height: 160px; } }
-    @media (max-width: 500px) {
+    @media (max-width: 400px) {
       .matriz .row .col {
         height: 130px; } }
 
@@ -88,8 +78,22 @@ footer {
   background-repeat: no-repeat;
   background-size: 20%; }
 
-/* -----------------------------------------*/
-/* ---------->>> Imagem <<<-----------------*/
-/* -----------------------------------------*/
+.btn-newGame {
+  background-color: transparent;
+  color: white;
+  text-align: center;
+  border: 1px solid white;
+  padding: 2px 12px;
+  height: 30px;
+  width: 120px;
+  border-radius: 10px;
+  transition: 0.5s; }
+
+.btn-newGame:hover {
+  color: black;
+  background-color: white; }
+
+.modal, .modal-dialog {
+  color: black; }
 
 /*# sourceMappingURL=estilo.css.map */
