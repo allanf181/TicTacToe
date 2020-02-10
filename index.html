@@ -8,6 +8,10 @@
     <meta name="description" content="Jogo da Velha">
     <meta name="keywords" content="jogo">
     <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap-reboot.min.css">
+    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap-grid.min.css">
+    <script src="assets/jquery-3.4.1.min.js"></script>
+    <script src="assets/bootstrap/js/bootstrap.bundle.min.js"></script>
     <link rel="stylesheet" href="css/estilo.css" />
     <title>Jogo da Velha</title>
 </head>
@@ -39,29 +43,53 @@
                 </div>
             </div>
         </div>
+        <div class="modal fade" id="modalEmpate" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+             aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="ModalLabelEnpate">Fim de jogo</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <p>Empate</span></p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-primary" data-dismiss="modal" onclick="novoJogo()">Novo Jogo</button>
+                        <button type="button" class="btn btn-secundary" data-dismiss="modal">Fechar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
 
         <section class="matriz">
             <div class="row">
                 <div class="col-xl-3"></div>
                 <div class="col-xl-6">
                     <div class="row">
-                        <div class="col m00 default" id="m00" onclick="jogar('m00', 0)"></div>
-                        <div class="col m10 default" id="m10" onclick="jogar('m10', 1)"></div>
-                        <div class="col m20 default" id="m20" onclick="jogar('m20', 2)"></div>
+                        <div class="col m00 default" id="m0" onclick="jogar(this, 0)"></div>
+                        <div class="col m10 default" id="m1" onclick="jogar(this, 1)"></div>
+                        <div class="col m20 default" id="m2" onclick="jogar(this, 2)"></div>
                     </div>
                     <div class="row">
-                        <div class="col m01 default" id="m01" onclick="jogar('m01', 3)"></div>
-                        <div class="col m11 default" id="m11" onclick="jogar('m11', 4)"></div>
-                        <div class="col m21 default" id="m21" onclick="jogar('m21', 5)"></div>
+                        <div class="col m01 default" id="m3" onclick="jogar(this, 3)"></div>
+                        <div class="col m11 default" id="m4" onclick="jogar(this, 4)"></div>
+                        <div class="col m21 default" id="m5" onclick="jogar(this, 5)"></div>
                     </div>
                     <div class="row">
-                        <div class="col m02 default" id="m02" onclick="jogar('m02', 6)"></div>
-                        <div class="col m12 default" id="m12" onclick="jogar('m12', 7)"></div>
-                        <div class="col m22 default" id="m22" onclick="jogar('m22', 8)"></div>
+                        <div class="col m02 default" id="m6" onclick="jogar(this, 6)"></div>
+                        <div class="col m12 default" id="m7" onclick="jogar(this, 7)"></div>
+                        <div class="col m22 default" id="m8" onclick="jogar(this, 8)"></div>
                     </div>
                 </div>
                 <div class="col-xl-3">
                     <button type="button" class="btn-newGame" onclick="novoJogo()">Novo Jogo</button>
+                    <div class="custom-control custom-switch">
+                        <input type="checkbox" class="custom-control-input" id="modoAI">
+                        <label class="custom-control-label" for="modoAI">Contra AI</label>
+                    </div>
                 </div>
             </div>
         </section>
@@ -71,13 +99,12 @@
         <p><strong>Estatísticas</strong></p>
         <p>Vitórias do jogador 1: <span id="vitoriaJogador1"></span></p>
         <p>Vitórias do jogador 2: <span id="vitoriaJogador2"></span></p>
+        <p>Empates: <span id="empates"></span></p>
         <p>Número de jogos: <span id="numeroJogos"></span></p>
     </footer>
 
-    <script src="assets/jquery-3.4.1.min.js"></script>
     <script src="js/comportamento.js"></script>
-    <script src="assets/bootstrap/js/bootstrap.bundle.min.js"></script>
-    <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+
 </body>
 
 </html>

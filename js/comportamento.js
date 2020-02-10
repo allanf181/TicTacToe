@@ -14,144 +14,128 @@ matriz[posição]
 */
 
 /* ---------->>> VARIÁVEIS GLOBAIS <<<----------*/
-var rodada = 1;
-var n_jogos = 1;
-var jogabilidade = true;
-var vez_jogador = 0;
-var vitoriaJogador1 = 0;
-var vitoriaJogador2 = 0;
+let rodada = 1;
+let n_jogos = 1;
+let jogabilidade = true;
+let modoAI = false;
+let vez_jogador = 0;
+let vitoriaJogador1 = 0;
+let vitoriaJogador2 = 0;
+let empates = 0;
 
 /* ---------->>> MATRIZ DO JOGO <<<----------*/
-var matriz = new Array(9);
-for (var i = 0; i < 9; i++)
-    matriz[i] = 0;
+let matriz = new Array(9);
+matriz.fill(0);
 
 
 function jogar(id, posicao) {
     vez_jogador = rodada % 2;
-    if (vez_jogador == 1 && jogabilidade == true) {
+    if (vez_jogador === 1 && jogabilidade) {
         //jogada do jogador 1       
-        if (matriz[posicao] == 0) {
-            document.getElementById(id).style.backgroundImage = "url('img/x.png')";
+        if (matriz[posicao] === 0) {
+            id.style.backgroundImage = "url('img/x.png')";
             matriz[posicao] = 1;
             rodada++;
+            if(modoAI) {
+                if (vitoria(matriz, 1) || vitoria(matriz, -1) || empate(matriz)) return;
+                let posicaoAI = minimax(matriz, -1, 0);
+                console.log("f");
+                console.log(posicaoAI);
+                document.getElementById("m" + posicaoAI[1]).style.backgroundImage = "url('img/o.png')";
+                matriz[posicaoAI[1]] = -1;
+                rodada++;
+            }
         }
     }
 
-    if (vez_jogador == 0 && jogabilidade == true) {
+    if ((vez_jogador === 0 && jogabilidade) && !modoAI) {
         //jogada do jogador 2
-        if (matriz[posicao] == 0) {
-            document.getElementById(id).style.backgroundImage = "url('img/o.png')";
-            matriz[posicao] = 2;
+        if (matriz[posicao] === 0) {
+            id.style.backgroundImage = "url('img/o.png')";
+            matriz[posicao] = -1;
             rodada++;
         }
     }
 
-    vitoria1();
-    vitoria2();
+
+    vitoria(matriz, 1);
+    vitoria(matriz, -1);
+    empate(matriz);
+
 }
 
-function vitoria1() {
+function vitoria(jogo, jogador) {
+    if(testavitoria(jogo, jogador)){
+        console.debug(jogo);
+        qtdVitoria(jogador);
+        return true;
+    }
+    return false;
+}
+
+function empate(jogo) {
+    if(!jogo.includes(0)){
+        qtdVitoria(0);
+        return true;
+    }
+    return false;
+}
+
+function testavitoria(jogo, jogador) {
     //Horizontal
-    if (matriz[0] == 1 && matriz[1] == 1 && matriz[2] == 1) {
-        console.log("Jogador 1 venceu no jogo nº: " + n_jogos);
-        qtdVitoria(1);
+    if (jogo[0] === jogador && jogo[1] === jogador && jogo[2] === jogador) {
+        //console.log("Jogador " + jogador + "venceu no jogo nº: " + n_jogos);
+        return true;
     }
 
-    if (matriz[3] == 1 && matriz[4] == 1 && matriz[5] == 1) {
-        console.log("Jogador 1 venceu no jogo nº: " + n_jogos);
-        qtdVitoria(1);
+    if (jogo[3] === jogador && jogo[4] === jogador && jogo[5] === jogador) {
+        //console.log("Jogador " + jogador + "venceu no jogo nº: " + n_jogos);
+        return true;
     }
 
-    if (matriz[6] == 1 && matriz[7] == 1 && matriz[8] == 1) {
-        console.log("Jogador 1 venceu no jogo nº: " + n_jogos);
-        qtdVitoria(1);
+    if (jogo[6] === jogador && jogo[7] === jogador && jogo[8] === jogador) {
+        //console.log("Jogador " + jogador + "venceu no jogo nº: " + n_jogos);
+        return true;
     }
 
     //Vertical
-    if (matriz[0] == 1 && matriz[3] == 1 && matriz[6] == 1) {
-        console.log("Jogador 1 venceu no jogo nº: " + n_jogos);
-        qtdVitoria(1);
+    if (jogo[0] === jogador && jogo[3] === jogador && jogo[6] === jogador) {
+        //console.log("Jogador " + jogador + "venceu no jogo nº: " + n_jogos);
+        return true;
     }
 
-    if (matriz[1] == 1 && matriz[4] == 1 && matriz[7] == 1) {
-        console.log("Jogador 1 venceu no jogo nº: " + n_jogos);
-        qtdVitoria(1);
+    if (jogo[1] === jogador && jogo[4] === jogador && jogo[7] === jogador) {
+        //console.log("Jogador " + jogador + "venceu no jogo nº: " + n_jogos);
+        return true;
     }
 
-    if (matriz[2] == 1 && matriz[5] == 1 && matriz[8] == 1) {
-        console.log("Jogador 1 venceu no jogo nº: " + n_jogos);
-        qtdVitoria(1);
-    }
-
-    //Diagonal
-    if (matriz[0] == 1 && matriz[4] == 1 && matriz[8] == 1) {
-        console.log("Jogador 1 venceu no jogo nº: " + n_jogos);
-        qtdVitoria(1);
-    }
-
-    if (matriz[2] == 1 && matriz[4] == 1 && matriz[6] == 1) {
-        console.log("Jogador 1 venceu no jogo nº: " + n_jogos);
-        qtdVitoria(1);
-    }
-}
-
-function vitoria2() {
-    //Horizontal
-    if (matriz[0] == 2 && matriz[1] == 2 && matriz[2] == 2) {
-        console.log("Jogador 2 venceu no jogo nº: " + n_jogos);
-        qtdVitoria(2);
-    }
-
-    if (matriz[3] == 2 && matriz[4] == 2 && matriz[5] == 2) {
-        console.log("Jogador 2 venceu no jogo nº: " + n_jogos);
-        qtdVitoria(2);
-    }
-
-    if (matriz[6] == 2 && matriz[7] == 2 && matriz[8] == 2) {
-        console.log("Jogador 2 venceu no jogo nº: " + n_jogos);
-        qtdVitoria(2);
-    }
-
-    //Vertical
-    if (matriz[0] == 2 && matriz[3] == 2 && matriz[6] == 2) {
-        console.log("Jogador 2 venceu no jogo nº: " + n_jogos);
-        qtdVitoria(2);
-    }
-
-    if (matriz[1] == 2 && matriz[4] == 2 && matriz[7] == 2) {
-        console.log("Jogador 2 venceu no jogo nº: " + n_jogos);
-        qtdVitoria(2);
-    }
-
-    if (matriz[2] == 2 && matriz[5] == 2 && matriz[8] == 2) {
-        console.log("Jogador 2 venceu no jogo nº: " + n_jogos);
-        qtdVitoria(2);
+    if (jogo[2] === jogador && jogo[5] === jogador && jogo[8] === jogador) {
+        //console.log("Jogador " + jogador + "venceu no jogo nº: " + n_jogos);
+        return true;
     }
 
     //Diagonal
-    if (matriz[0] == 2 && matriz[4] == 2 && matriz[8] == 2) {
-        console.log("Jogador 2 venceu no jogo nº: " + n_jogos);
-        qtdVitoria(2);
+    if (jogo[0] === jogador && jogo[4] === jogador && jogo[8] === jogador) {
+        //console.log("Jogador " + jogador + "venceu no jogo nº: " + n_jogos);
+        return true;
     }
 
-    if (matriz[2] == 2 && matriz[4] == 2 && matriz[6] == 2) {
-        console.log("Jogador 2 venceu no jogo nº: " + n_jogos);
-        qtdVitoria(2);
+    if (jogo[2] === jogador && jogo[4] === jogador && jogo[6] === jogador) {
+        //console.log("Jogador " + jogador + "venceu no jogo nº: " + n_jogos);
+        return true;
     }
+
+    return false;
 }
 
 function novoJogo() {
     rodada = 1;
     n_jogos++;
     jogabilidade = true;
-
-    var campos = document.getElementsByClassName("default");
-    for (var i = 0; i < campos.length; i++) {
+    modoAI = $("#modoAI").is(":checked");
+    let campos = document.getElementsByClassName("default");
+    for (let i = 0; i < 9; i++) {
         campos[i].style.backgroundImage = "none";
-    }
-
-    for (var i = 0; i < 9; i++) {
         matriz[i] = 0;
     }
 }
@@ -160,18 +144,64 @@ function qtdVitoria(jogador) {
     jogabilidade = false;
     document.getElementById('numeroJogos').innerHTML = n_jogos;
 
-    if (jogador === 1) {
-        vitoriaJogador1++;
-        document.getElementById('vitoriaJogador1').innerHTML = vitoriaJogador1;        
-        $('#modalVencedor').modal('show');
-        document.getElementById('spanVencedor').innerHTML = '1'; 
+    switch (jogador) {
+        case 1:
+            vitoriaJogador1++;
+            document.getElementById('vitoriaJogador1').innerHTML = vitoriaJogador1;
+            document.getElementById('spanVencedor').innerHTML = '1';
+            $('#modalVencedor').modal('show');
+            break;
+        case -1:
+            vitoriaJogador2++;
+            document.getElementById('vitoriaJogador2').innerHTML = vitoriaJogador2;
+            document.getElementById('spanVencedor').innerHTML = '2';
+            $('#modalVencedor').modal('show');
+            break;
+        case 0:
+            empates++;
+            document.getElementById('empates').innerHTML = empates;
+            $('#modalEmpate').modal('show');
+            break;
+        default:
+            break;
     }
 
+}
+
+function pontuacao(jogo, jogador, profundidade) {
+    if (testavitoria(jogo, -1)){
+        return 10 - profundidade;
+    }else if (testavitoria(jogo, 1)){
+        return profundidade - 10;
+    }
     else {
-        vitoriaJogador2++;
-        document.getElementById('vitoriaJogador2').innerHTML = vitoriaJogador2;
-        $('#modalVencedor').modal('show');  
-        document.getElementById('spanVencedor').innerHTML = '2';      
+        return 0;
+    }
+}
+
+function minimax(jogo, jogador, profundidade){
+    if(!jogo.includes(0) || testavitoria(jogo, 1) || testavitoria(jogo, -1)){
+        return [pontuacao(jogo, jogador, profundidade), -1];
+    }
+    let prof = profundidade + 1;
+    let pontuacoes = [];
+    let movimentos = [];
+    for (let i = 0; i < 9; i++){
+        let copiajogo = [...jogo];
+        if(copiajogo[i] === 0) {
+            copiajogo[i] = jogador;
+            let a = minimax(copiajogo, -jogador, prof);
+            //console.log(profundidade);
+            //console.log(a);
+            pontuacoes.push(a[0]);
+            movimentos.push(i);
+        }
+    }
+
+    if(jogador === -1){
+        return [pontuacoes[pontuacoes.indexOf(Math.max(...pontuacoes))],movimentos[pontuacoes.indexOf(Math.max(...pontuacoes))], movimentos, pontuacoes];
+    }else{
+        return [pontuacoes[pontuacoes.indexOf(Math.min(...pontuacoes))],movimentos[pontuacoes.indexOf(Math.min(...pontuacoes))], movimentos, pontuacoes];
     }
 }
 
